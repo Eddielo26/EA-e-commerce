@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { TableHints } = require("sequelize/types");
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
 // The `/api/products` endpoint
@@ -9,7 +8,7 @@ router.get("/", (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    attributes: ["id", "product_name", "price", "stock", category_id],
+    attributes: ["id", "product_name", "price", "stock", "category_id"],
     include: [
       {
         model: Category,
